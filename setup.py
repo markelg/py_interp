@@ -9,9 +9,12 @@ setup(
     name='py_interp',
     platforms=['GNU/Linux'],
     version='1.0.0',
+    author='Marker Garcia, Carlos Blanco'
     keywords=['climate', 'weather'],
     install_requires=[ 'numpy', 'netCDF4'],
+    url='https://github.com/markelg/py_interp',
     packages=['py_interp'],
+    license='MIT',
     include_package_data=True,
     package_data={'py_interp': [
         'README',
