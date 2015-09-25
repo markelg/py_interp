@@ -13,7 +13,7 @@ py_interp is a command line tool for interpolating WRF output files to pressure 
 
 py_interp can be installed downloading the source and typing python setup.py install, but the recommended way is to use PyPI.
 
-## Usage: 
+## Usage
 
 Please type python py_interp.py -h for help.
 
