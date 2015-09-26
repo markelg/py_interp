@@ -19,7 +19,7 @@ py_interp can be installed downloading the source and typing python setup.py ins
 
 ## Usage
 
-Please type python py_interp.py -h for help.
+Please type python py_interp -h for help.
 
 ## Standalone executable
 
