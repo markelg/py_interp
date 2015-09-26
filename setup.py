@@ -3,9 +3,6 @@
 import os.path
 from numpy.distutils.core import setup, Extension
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
 setup(
     name='py_interp',
     platforms=['GNU/Linux'],
@@ -23,7 +20,6 @@ setup(
         'README.md',
     ]
     },
-    long_description=read('README.md'),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Science/Research",
