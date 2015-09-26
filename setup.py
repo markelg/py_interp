@@ -1,30 +1,35 @@
 #!/usr/bin/env python
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+import os.path
+from numpy.distutils.core import setup, Extension
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name='py_interp',
     platforms=['GNU/Linux'],
     version='1.0.0',
-    author='Marker Garcia, Carlos Blanco',
+    author='Marker Garcia',
+    author_email='markel.garcia@ic3.cat',
+    description=( 'It is a command line tool for interpolating WRF output files to pressure levels, ' 
+                   'as well as computing a series of diagnostics such as low, medium and high cloud cover' ),
     keywords=['climate', 'weather'],
     install_requires=[ 'numpy', 'netCDF4'],
     url='https://github.com/markelg/py_interp',
     packages=['py_interp'],
     license='MIT',
-    include_package_data=True,
     package_data={'py_interp': [
-        'README',
+        'README.md',
     ]
     },
+    long_description=read('README.md'),
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Science/Research",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3 "],
     scripts=['bin/py_interp.py'], 
+    ext_modules = [Extension( 'py_interp_fortran', ['src/py_interp_fortran.F90'] )],
 )
 
-from numpy.distutils.core import Extension, setup
-# Fortran extension
-setup(
-  ext_modules = [Extension( 'py_interp_fortran', ['src/py_interp_fortran.F90'] )],
-)
