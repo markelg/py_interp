@@ -36,12 +36,12 @@ def copy_netcdf_structure(ifile, ofile, variables, dimensions=None, isncobj = Fa
         if dimensions:
             if dimname not in dimensions:
                 continue
-        logging.info( "Setting dimension %s %s" % (dimname, dimobj) )
+        logging.debug( "Setting dimension %s %s" % (dimname, dimobj) )
         if limtime2unlim and dimname == "time":
             onc.createDimension("time", None)
             continue
         if dimobj.isunlimited():
-            logging.info( "Dimension is unlimited" )
+            logging.debug( "Dimension is unlimited" )
             onc.createDimension(dimname, None)
         else:
             onc.createDimension(dimname, len(dimobj))
@@ -111,12 +111,12 @@ def interp2plevs(ivar, inc, onc, bf, plevs):
     # Check if the variable is staggered and de-stagger it if necessary
     #
     if is_staggered(ivarobj):
-        logging.info( "Variable %s is staggered, de-staggering" % ivar )
+        logging.debug( "Variable %s is staggered, de-staggering" % ivar )
         ivardata = de_stagger(ivarobj, ivardata)
     #
     # Call fortran interpolation routine
     #
-    logging.info( "Calling interpolation routine" )
+    logging.debug( "Calling interpolation routine" )
     ovardata = f90.interp(tr(ivardata), tr(bf.pres_field), plevs, tr(bf.psfc), tr(bf.hgt), tr(bf.temp), tr(bf.qvapor),
                         linlog=1, extrapolate=1, geopt=False, missing=1.e36)
     #
@@ -162,7 +162,7 @@ class BasicFields:
         self.Cp = 7.*self.Rd/2. #  Specific heat (J Kg-1)
         self.RCP = self.Rd/self.Cp
         self.P0 = 100000 # Base pressure for the Poisson equation in Pa
-        logging.info( "Reading basic fields..." )
+        logging.debug( "Reading basic fields..." )
         self.get_sfc_pressure(inc)
         self.get_terrain_height(inc)
         self.get_pressure(inc)

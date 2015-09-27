@@ -31,12 +31,16 @@ if not opt.ifile :
     parser.print_help()
     sys.exit(1)
 
+if opt.verbose :
+    level=logging.DEBUG
+else:
+    level=logging.INFO
+logging.basicConfig(level=level, format='%(message)s')
+
 if not os.path.exists(opt.ifile):
     logging.error( "ERROR: Input file %s does not exist" % opt.ifile  )
     sys.exit(1)
 
-if opt.verbose :
-    logging.basicConfig(level=logging.DEBUG)
 #
 # Some global variables
 #
