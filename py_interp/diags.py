@@ -6,10 +6,6 @@ from py_interp_fortran import routines as f90
 from py_interp.fun import massvertint
 tr = np.transpose
 
-__version__  = '1.0.0'
-__author__   = 'Carlos Blanco'
-__revision__ = "$Id: diags.py 2819 2015-09-23 15:24:22Z carlos $"
-
 def compute_MSLP(ivar, inc, onc, bf, plevs):
     ovardata = f90.compute_mslp(tr(bf.pres_field), tr(bf.psfc), tr(bf.hgt), tr(bf.temp), tr(bf.qvapor))
     ovarobj = onc.createVariable(ivar, 'float32', ["Time", "south_north", "west_east"], zlib=True, complevel=4, shuffle=True)

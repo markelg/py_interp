@@ -10,10 +10,6 @@
 #
 ########################################################################
 
-__version__  = '1.0.0'
-__author__   = 'Carlos Blanco'
-__revision__ = "$Id: py_interp.py 2819 2015-09-23 15:24:22Z carlos $"
-
 import numpy   as np
 import netCDF4 as ncdf
 import os, sys, logging

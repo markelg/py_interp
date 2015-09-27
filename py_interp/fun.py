@@ -2,14 +2,10 @@
 # Library with utilities to maniputale netCDF files
 #
 import logging
-import numpy as np
+import numpy   as np
 import netCDF4 as ncdf
 import sys, time
 from py_interp_fortran import routines as f90
-
-__version__  = '1.0.0'
-__author__   = 'Carlos Blanco'
-__revision__ = "$Id: fun.py 2819 2015-09-23 15:24:22Z carlos $"
 
 tr = np.transpose # Shorter way to call it
 #
