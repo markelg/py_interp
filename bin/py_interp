@@ -35,8 +35,8 @@ if not opt.ifile :
     parser.print_help()
     sys.exit(1)
 
-if not os.path.exists(ifile):
-    logging.error( "ERROR: Input file %s does not exist" % ifile )
+if not os.path.exists(opt.ifile):
+    logging.error( "ERROR: Input file %s does not exist" % opt.ifile  )
     sys.exit(1)
 
 if opt.verbose :
