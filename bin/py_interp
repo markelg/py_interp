@@ -25,6 +25,7 @@ parser.set_defaults(quiet=False,singlerec=False)
 parser.add_option("-i", dest="ifile", help="Input wrfout file")
 parser.add_option("-v", dest="varlist", default="", help="Comma sepparated variable list")
 parser.add_option("-p", "--plevs", dest="plevs", help="Comma sepparated pressure level list in hPa")
+parser.add_option("-o", "--overwrite", dest="overwrite", action="store_true", default=False, help="Overwrite input file")
 parser.add_option("--verbose", dest="verbose", action="store_true", default=False, help="Get a more detailed log")
 (opt, args) = parser.parse_args()
 if not opt.ifile :
@@ -118,7 +119,11 @@ try :
         compute_diag = getattr(py_interp.diags, "compute_%s" % var)
         onc = compute_diag(var, inc, onc, bf, plevs)
     onc.sync()
+    if opt.overwrite:
+        import shutil
+        shutil.move(ofile,ifile)
 except Exception as err :
     logging.error( "ERROR: processing %s file: %s" % (ifile, err) )
-else :	
+    sys.exit(1)
+else :
     logging.info( "SUCCESS: p_interp finished without errors" )
