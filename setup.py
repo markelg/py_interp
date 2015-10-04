@@ -6,7 +6,7 @@ from numpy.distutils.core import setup, Extension
 setup(
     name='py_interp',
     platforms=['GNU/Linux'],
-    version='1.0.0',
+    version='1.2.0',
     author='Marker Garcia',
     author_email='markel.garcia@ic3.cat',
     description=( 'It is a command line tool for interpolating WRF output files to pressure levels, ' 
@@ -25,7 +25,7 @@ setup(
         "Intended Audience :: Science/Research",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3 "],
-    scripts=['bin/py_interp.py'], 
+    scripts=['bin/py_interp'], 
     ext_modules = [Extension( 'py_interp_fortran', ['src/py_interp_fortran.F90'] )],
 )
 
